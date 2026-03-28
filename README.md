@@ -50,15 +50,15 @@ You can install Postman via this website: https://www.postman.com/downloads/
 ## Mandatory Checklists (Publisher)
 -   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Subscriber model struct.`
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Subscriber repository.`
-    -   [ ] Commit: `Implement list_all function in Subscriber repository.`
-    -   [ ] Commit: `Implement delete function in Subscriber repository.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
+    -   [✅] Commit: `Create Subscriber model struct.`
+    -   [✅] Commit: `Create Notification model struct.`
+    -   [✅] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
+    -   [✅] Commit: `Implement add function in Subscriber repository.`
+    -   [✅] Commit: `Implement list_all function in Subscriber repository.`
+    -   [✅] Commit: `Implement delete function in Subscriber repository.`
+    -   [✅] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
+    -   [] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
     -   [ ] Commit: `Implement subscribe function in Notification controller.`
     -   [ ] Commit: `Implement unsubscribe function in Notification service.`
@@ -77,6 +77,11 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. Di kasus BambangShop ini, menurut saya Subscriber tidak harus dibuat sebagai interface atau trait. Satu struct aja sudah cukup karena semua subscriber punya data dan perilaku yang sama, yaitu menyimpan url dan name lalu menerima notifikasi dengan cara yang sama. Trait baru akan lebih berguna kalau nanti ada banyak jenis subscriber dengan cara kerja update() yang berbeda.
+
+2. Menurut saya Vec bisa dipakai kalau datanya sedikit dan kebutuhannya lebih sederhana. Tapi karena id pada Program dan url pada Subscriber harus unik, DashMap jadi lebih cocok. Dengan menggunakan DashMap, data lebih mudah dicafi, ditambah, dan dihapus berdasarkan key tanpa harus mengecek satu per satu seperti di Vec.
+
+3. Menurut saya DashMap tetep dibutuhkan dan tidak bisa langsung diganti hanya dengan Singleton pattern. Singleton hanya memastikan bahwa kita memakai satu instance global. Masalahnya, kita juga perlu struktur data yang aman dipakai oleh banyak thread. Di sini DashMap dipakai untuk thread safety, sedangkan lazy_static sudah membantu membuat data global seperti konsep Singleton. Jadi kalau Singleton aja belum cukup tanpa DashMap.
 
 #### Reflection Publisher-2
 
