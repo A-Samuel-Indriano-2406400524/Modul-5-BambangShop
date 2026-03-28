@@ -91,3 +91,8 @@ This is the place for you to write reflections:
 3. Saya udah mencoba memakai Postman untuk test endpoint di tutorial modul ini dan menurut saya Postman sangat membantu karena saya bisa langsung mengirim request HTTP dan melihat response nya tanpa harus membuat frontend. Fitur yang mungkin sangat membantu adalah collection dan penyimpanan request, karena endpoint jadi lebih rapi dan mudah untuk dicoba ulang. Saya rasa sih tool ini akan tetap berguna untuk project-project yang memakai API.
 
 #### Reflection Publisher-3
+1. Di tutorial ini observer pattern yang digunakan adalah Push model. Karena publisher langsung mengirim data notifikasi ke subscriber ketika ada event seperti create, publish, atau delete product. Jadi subscriber tidak perlu meminta data sendiri ke publisher, karena data sudah langsung di push oleh publisher.
+
+2. Kelebihan Pull model adalah subscriber bisa mengambil data yang lebih lengkap sesuai kebutuhannya sendiri, jadi publisher tidak perlu mengirim terlalu banyak detail di awal. Kekurangan Pull model adalah prosesnya jadi lebih rumit, karena setelah menerima info awal, subscriber masih harus meminta data lagi ke publisher. Hal ini bisa menambah request dan menambah kompleksitas.
+
+3. Jika tidak menggunakan multi-threading di proses notifikasi, maka proses notifikasi akan berjalan satu per satu secara berurutan. Akibatnya kalau ada banyak subscriber atau ada subscriber yang lambat merespon, publisher akan ikut menunggu lebih lama. Ini bisa membuat request menjadi lambat selesai dan performa program menurun. Dengan menggunakan multi-threading, notifikasi bisa dikirim ke beberapa subscriber secara bersamaan sehingga prosesnya lebih cepat.
