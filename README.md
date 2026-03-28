@@ -84,5 +84,10 @@ This is the place for you to write reflections:
 3. Menurut saya DashMap tetep dibutuhkan dan tidak bisa langsung diganti hanya dengan Singleton pattern. Singleton hanya memastikan bahwa kita memakai satu instance global. Masalahnya, kita juga perlu struktur data yang aman dipakai oleh banyak thread. Di sini DashMap dipakai untuk thread safety, sedangkan lazy_static sudah membantu membuat data global seperti konsep Singleton. Jadi kalau Singleton aja belum cukup tanpa DashMap.
 
 #### Reflection Publisher-2
+1. Menurut saya memisahkan Service dan Repository dari Model membuat tanggung jawab setiap bagian menjadi lebih jelas. Model fokus pada bentuk data, Repository fokus pada penyimpanan data, dan Service fokus pada business logic. Dengan memisahkannya, kode jadi lebih rapi dan lebih mudah untuk dirubah kalau misal nanti ada perubahan logic atau cara penyimpanan data.
+
+2. Kalau hanya menggunakan Model, maka salah satu model harus menangani terlalu banyak hal sekaligus. Misalnya Program, Subscriber, dan Notification tidak hanya menyimpan data, tapi harus mengatur juga alur bisnis dan akses data, sehingga menurut saya ini hanya akan membuat tiap model menjadi lebih kompleks. Hubungan antar model juga bisa menjadi berantakan karena masing-masing model saling memanggil logic atau satu sama lain secara langsung.
+
+3. Saya udah mencoba memakai Postman untuk test endpoint di tutorial modul ini dan menurut saya Postman sangat membantu karena saya bisa langsung mengirim request HTTP dan melihat response nya tanpa harus membuat frontend. Fitur yang mungkin sangat membantu adalah collection dan penyimpanan request, karena endpoint jadi lebih rapi dan mudah untuk dicoba ulang. Saya rasa sih tool ini akan tetap berguna untuk project-project yang memakai API.
 
 #### Reflection Publisher-3
